@@ -1,0 +1,1 @@
+export { ProductBio } from "./ProductBio"
