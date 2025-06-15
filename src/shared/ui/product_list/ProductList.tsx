@@ -20,7 +20,7 @@ export const ProductList: FunctionComponent<Props> = ({ className, data }) => {
             {
                 data.map((card, key) => (
                     <li key={key}>
-                        <Link href={`${pathname}/${card.brand.name}/${card.id.toString()}`} as={`${card.id.toString()}`}  scroll={false}>
+                        <Link href={`/rackets/${card.brand.name}/${card.id.toString()}`} scroll={false}>
                             <ProductCard cardData={card} />
                         </Link>
                     </li>
