@@ -9,22 +9,19 @@ import { Roboto } from 'next/font/google'
 
 export default function RootLayout({
     children,
-    modal
 }: Readonly<{
     children: React.ReactNode;
-    modal: React.ReactNode
 }>) {
     return (
         <html lang="ru">
             <head>
                 <link rel="icon" type="image/png" href="favicon.png" />
             </head>
-            <body className={`${roboto.className} min-h-svh grid grid-rows-[auto_1fr_auto]`}>
+            <body className={`${roboto.className} h-svh overflow-hidden grid grid-rows-[1fr_auto]`}>
                 <Header />
-                <main>
+                <main className="pt-5 min-h-[calc(100svh-4.75rem)] h-full overflow-hidden">
                     {children}
                 </main>
-                <Footer />
                 <div id="modal"></div>
             </body>
         </html>

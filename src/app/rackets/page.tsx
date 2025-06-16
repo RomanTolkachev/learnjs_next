@@ -2,13 +2,13 @@
 
 import { IBrand } from '@/entities';
 import { rackets } from '@/lib/mock';
-import { ProductList } from '@/shared/ui/product_list';
 import { SidebarSelect } from '@/shared/ui/sidebar_select';
+import List from '@/widgets/List';
 import { useParams, usePathname, useRouter, useSelectedLayoutSegment } from 'next/navigation';
 import React, { FunctionComponent } from 'react';
 
 interface Props {
-    className?: string;
+    
 }
 
 type TBrands = IBrand | "All";
@@ -22,7 +22,7 @@ const routerValues: Record<TBrands, TBrands> = {
     Yonex: "Yonex"
 }
 
-const Page: FunctionComponent<Props> = ({ className }) => {
+const Page: FunctionComponent<Props> = () => {
 
     const pathname = usePathname();
     const router = useRouter();
@@ -36,11 +36,9 @@ const Page: FunctionComponent<Props> = ({ className }) => {
 
     const regex = /\/rackets(?:\/([^\/]+))?$/;
 
-    console.log(pathname.match(regex), "лог из корневой")
-
     return (
-        <section className={`${className} mx-auto px-10 w-full grid grid-cols-[auto_auto]`}>
-            <aside>
+        <section className={` mx-auto px-10 w-full grid grid-cols-[auto_auto] h-full`}>
+            <aside className=''>
                 <h3 className='font-semibold text-xs text-muted-foreground/60 mb-1'>Бренд</h3>
                 <SidebarSelect
                     values={routerValues}
@@ -48,7 +46,7 @@ const Page: FunctionComponent<Props> = ({ className }) => {
                     setter={to => navigate(to === "All" ? `${pathname}` : `${pathname}/sort/${to as TBrands}`)}
                 />
             </aside>
-            <ProductList data={filteredRackets} />;
+            <List filteredRackets={filteredRackets}/>
         </section>
     )
 

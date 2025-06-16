@@ -7,10 +7,10 @@ import { useParams, useRouter } from 'next/navigation';
 import React, { FunctionComponent } from 'react';
 
 interface Props {
-    className?: string;
+
 }
 
-const page: FunctionComponent<Props> = ({ className }) => {
+const page: FunctionComponent<Props> = () => {
 
     const router = useRouter();
     const id = Number(useParams().id);

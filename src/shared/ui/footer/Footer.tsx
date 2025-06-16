@@ -7,7 +7,7 @@ interface Props {
 
 export const Footer: FunctionComponent<Props> = ({ className }) => {
     return (
-        <footer className={`${className} bg-emerald-100 flex justify-between items-center`}>
+        <footer className={`${className} flex justify-between items-center`}>
             <p className='text-xs text-muted-foreground px-4'>
                 © Tennis store. All rights are left
             </p>

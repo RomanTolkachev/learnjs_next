@@ -1,12 +1,11 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
 interface Props {
-    className?: string;
     sortedModal: ReactNode
     children: ReactNode
 }
 
-const layout: FunctionComponent<Props> = ({ className, sortedModal, children }) => {
+const layout: FunctionComponent<Props> = ({ sortedModal, children }) => {
     return (
         <>
             {sortedModal}

@@ -1,3 +1,5 @@
+"use client"
+
 import { IProduct } from '@/entities';
 import React, { FunctionComponent } from 'react';
 import Image from 'next/image'
@@ -11,8 +13,8 @@ interface Props {
 
 export const ProductBio: FunctionComponent<Props> = ({ className, productData }) => {
     return (
-        <article className={`${className} grid grid-cols-2`}>
-            <Card>
+        <div className={`${className} max-w-3xl mx-auto grid grid-cols-[2fr_1fr]`}>
+            <Card className=''>
                 <CardHeader>
                     <CardTitle>{productData.model}</CardTitle>
                     <CardDescription>{productData.name}</CardDescription>
@@ -21,16 +23,17 @@ export const ProductBio: FunctionComponent<Props> = ({ className, productData })
                     {productData.description}
                     <p className=''>{productData.price} $</p>
                 </CardContent>
-                <CardFooter>        
-                    <Button onClick={() => { }} isActive className="w-full">
-                    В корзину
-                </Button>
+                <CardFooter>
+                    <Button onClick={() => { }} isActive className="w-full md:max-w-[200px]">
+                        В корзину
+                    </Button>
                 </CardFooter>
-
             </Card>
-            <div className='relative h-120 radial-mask'>
-                <Image alt='img' src={productData.imageUrl} priority fill className='object-contain' sizes="500px" />
+            <div>
+                <div className='relative h-120 radial-mask aspect-[2/3] place-self-center'>
+                    <Image alt='img' src={productData.imageUrl} priority fill className='object-contain' sizes="500px" />
+                </div>
             </div>
-        </article>
+        </div>
     );
 };
