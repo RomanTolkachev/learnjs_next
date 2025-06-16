@@ -18,10 +18,10 @@ export const ProductList: FunctionComponent<Props> = ({ className, data }) => {
     return (
         <ul className={`${className} grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3`}>
             {
-                data.map((card, key) => (
+                data.map((product, key) => (
                     <li key={key}>
-                        <Link href={`/rackets/${card.brand.name}/${card.id.toString()}`} scroll={false}>
-                            <ProductCard cardData={card} />
+                        <Link href={`${pathname}/${product.id.toString()}`} scroll={false}>
+                            <ProductCard cardData={product} />
                         </Link>
                     </li>
                 ))

@@ -34,7 +34,9 @@ const Page: FunctionComponent<Props> = ({ className }) => {
         router.push(to);
     }
 
-    const regex = /\/rackets(?:\/([^\/]+))?$/;
+    const regex = /^\/rackets\/sort\/([^\/]+)/;
+
+    console.log(pathname.match(regex), "лог из вложенной")
 
     return (
         <section className={`${className} mx-auto px-10 w-full grid grid-cols-[auto_auto]`}>
@@ -43,14 +45,14 @@ const Page: FunctionComponent<Props> = ({ className }) => {
                 <SidebarSelect
                     values={routerValues}
                     currentValue={pathname.match(regex)?.[1] ?? "All"}
-                    setter={to => navigate(to === "All" ? "/rackets" : `/rackets/${to as TBrands}`)}
+                    setter={to => navigate(to === "All" ? "/rackets" : `/rackets/sort/${to as TBrands}`)}
                 />
             </aside>
-            <ProductList data={filteredRackets} />;
+            <ProductList data={filteredRackets} />
         </section>
     )
 
-};
+}
 
 export default Page;
 
