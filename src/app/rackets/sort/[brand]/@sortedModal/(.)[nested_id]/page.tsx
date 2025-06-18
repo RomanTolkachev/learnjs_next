@@ -6,11 +6,8 @@ import { ProductBio } from '@/shared/ui/product_bio';
 import { useParams, useRouter } from 'next/navigation';
 import React, { FunctionComponent } from 'react';
 
-interface Props {
-    
-}
 
-const page: FunctionComponent<Props> = () => {
+const Page: FunctionComponent = () => {
 
     const router = useRouter();
     const id = Number(useParams().nested_id);
@@ -18,7 +15,7 @@ const page: FunctionComponent<Props> = () => {
     const cardData = rackets.find(item => item.id === id)
 
     return (
-        <Modal closeModal={() => router.back()}>
+        <Modal closeModal={router.back}>
             {
                 !cardData
                     ? <div>информация отсутствует</div>
@@ -28,4 +25,4 @@ const page: FunctionComponent<Props> = () => {
     );
 };
 
-export default page;
+export default Page;

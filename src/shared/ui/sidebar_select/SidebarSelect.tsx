@@ -2,19 +2,18 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import React, { FunctionComponent } from 'react';
 
 interface Props {
-    className?: string;
     values: Record<string, string>
-    currentValue?: string
+    currentValue: string
     setter: (param: unknown) => void
 }
 
 
-export const SidebarSelect: FunctionComponent<Props> = ({ className, currentValue, setter, values }) => {
+export const SidebarSelect: FunctionComponent<Props> = ({ currentValue, setter, values }) => {
 
     return (
         <Select value={currentValue} onValueChange={nextValue => setter(nextValue)}>
             <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Выберете бренд" />
+                <SelectValue placeholder="Выберете значение" />
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>

@@ -1,11 +1,10 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, PropsWithChildren, ReactNode } from 'react';
 
 interface Props {
-    children: ReactNode
     modal: ReactNode
 }
 
-const layout: FunctionComponent<Props> = ({ children, modal }) => {
+const Layout: FunctionComponent<PropsWithChildren<Props>> = ({ children, modal }) => {
     return (
         <>
             {modal}
@@ -14,4 +13,4 @@ const layout: FunctionComponent<Props> = ({ children, modal }) => {
     );
 };
 
-export default layout;
+export default Layout;

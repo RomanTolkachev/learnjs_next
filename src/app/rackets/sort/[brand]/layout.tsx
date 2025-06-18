@@ -1,11 +1,10 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, PropsWithChildren, ReactNode } from 'react';
 
 interface Props {
     sortedModal: ReactNode
-    children: ReactNode
 }
 
-const layout: FunctionComponent<Props> = ({ sortedModal, children }) => {
+const Layout: FunctionComponent<PropsWithChildren<Props>> = ({ sortedModal, children }) => {
     return (
         <>
             {sortedModal}
@@ -14,4 +13,4 @@ const layout: FunctionComponent<Props> = ({ sortedModal, children }) => {
     );
 };
 
-export default layout;
+export default Layout;

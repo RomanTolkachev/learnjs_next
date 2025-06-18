@@ -5,11 +5,7 @@ import { ProductBio } from '@/shared/ui/product_bio';
 import { useParams } from 'next/navigation';
 import React, { FunctionComponent } from 'react';
 
-interface Props {
-    className?: string;
-}
-
-const Wrapper: FunctionComponent<Props> = ({ className }) => {
+const Page: FunctionComponent = () => {
 
     const id = Number(useParams().static_nested_id);
 
@@ -21,9 +17,5 @@ const Wrapper: FunctionComponent<Props> = ({ className }) => {
         : <ProductBio productData={cardData} />
     )
 };
-
-function Page() {
-    return <Wrapper />
-}
 
 export default Page;

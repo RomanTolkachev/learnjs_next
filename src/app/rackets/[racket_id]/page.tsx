@@ -7,7 +7,7 @@ interface Props {
     params: Promise<{ racket_id: string }>
 }
 
-const page: FunctionComponent<Props> = async ({ params }) => {
+const Page: FunctionComponent<Props> = async ({ params }) => {
 
     const id = Number((await params).racket_id);
 
@@ -28,4 +28,4 @@ export async function generateStaticParams() {
     ];
 }
 
-export default page;
+export default Page;
