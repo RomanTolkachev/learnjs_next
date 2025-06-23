@@ -24,9 +24,12 @@ export const CarouselWrapper: FC<Props> = ({ rackets }) => {
     return (
         <>
             <Carousel plugins={[plugin.current, Fade()]} className="relative w-full h-full max-w-sm mx-auto">
-            <Badge variant="secondary" className='absolute left-2/3 h-8 text-2xl px-5 z-30 font-bold top-3/4 text-white bg-red-500'>TOP SALES</Badge>
+                <Badge variant="secondary" className='absolute left-2/3 h-8 text-2xl px-5 z-30 font-bold top-3/4 text-white bg-red-500'>TOP SALES</Badge>
                 <Button isActive={false} asChild variant="ghost">
-                    <Link className="absolute z-20 right-5 top-0 text-muted-foreground" href={"rackets"}>
+                    <Link
+                        prefetch={false}
+                        className="absolute z-20 right-5 top-0 text-muted-foreground"
+                        href={"top10"}>
                         все{<MoveUpRight strokeWidth={4} />}
                     </Link>
                 </Button>

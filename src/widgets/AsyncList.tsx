@@ -16,7 +16,7 @@ const AsyncList: FC = async () => {
         return <LoadError />
     }
 
-    return <ProductList className='lg:!grid-cols-2 xl:!grid-cols-3' data={rackets}/>;
-};
+    return <ProductList className='lg:!grid-cols-2 xl:!grid-cols-3' data={rackets}/>
+}
 
 export default AsyncList;

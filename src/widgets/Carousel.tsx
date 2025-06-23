@@ -6,7 +6,6 @@ import { LoadError } from '@/shared/ui/load_error';
 import { notFound } from 'next/navigation';
 import React, { FC } from 'react';
 
-
 export const Carousel: FC = async () => {
 
     const { data, isError } = await getTop10();
@@ -21,4 +20,4 @@ export const Carousel: FC = async () => {
 
     return  <CarouselWrapper rackets={data} />
 
-};
+}

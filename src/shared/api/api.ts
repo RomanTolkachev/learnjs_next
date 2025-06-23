@@ -8,7 +8,7 @@ export const getTop10 = async (): Promise<Response<IProduct[]>> => {
 
     try {
 
-        let res = await fetch(`${API_URL}/top-10`, { cache: "no-store" })
+        let res = await fetch(`${API_URL}/top-10`, { next: { revalidate: 20 } })
 
         if (res.status === 404) {
             return { data: undefined, isError: false }
@@ -75,5 +75,43 @@ export async function getProducts({ page, limit }: params): Promise<Response<IPr
         }
 
     }
+}
+
+type propParam = {
+    id: string | number
+}
+
+export async function getProduct({ id }: propParam): Promise<Response<IProduct>> {
+
+    try {
+
+        const res = await fetch(`${API_URL}/product/${id}`)
+
+        if (!res.ok) {
+            return {
+                isError: true,
+                data: undefined
+            }
+        }
+
+        if (res.status === 404) {
+            return {
+                isError: false,
+                data: undefined
+            }
+        }
+
+        return {
+            isError: false,
+            data: (await res.json()).product
+        }
+
+    } catch (err) {
+        return {
+            isError: true,
+            data: undefined
+        }
+    }
+
 }
 

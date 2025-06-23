@@ -1,23 +1,20 @@
-import { rackets } from '@/lib/mock';
-import { ProductBio } from '@/shared/ui/product_bio';
-import { useParams } from 'next/navigation';
-import React, { FunctionComponent } from 'react';
+"use server"
+
+import { Product } from '@/views/product';
+import { FC, Suspense } from 'react';
 
 interface Props {
-    params: Promise<{ racket_id: string }>
+    params: Promise<{
+        racket_id: string;
+    }>;
 }
 
-const Page: FunctionComponent<Props> = async ({ params }) => {
+const Page: FC<Props> = async ({ params }) => {
 
-    const id = Number((await params).racket_id);
+    const { racket_id } = await params;
 
-    const cardData = rackets.find(item => item.id === id)
+    return <Product racket_id={Number(racket_id)} />
 
-    return (
-        !cardData
-            ? <div>информация отсутствует</div>
-            : <ProductBio productData={cardData} />
-    );
 };
 
 export async function generateStaticParams() {

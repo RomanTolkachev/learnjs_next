@@ -8,8 +8,10 @@ import { Roboto } from 'next/font/google'
 
 export default function RootLayout({
     children,
+    root_modal
 }: Readonly<{
     children: React.ReactNode;
+    root_modal: React.ReactNode;
 }>) {
     return (
         <html lang="ru">
@@ -20,6 +22,7 @@ export default function RootLayout({
                 <Header />
                 <main className="pt-5 min-h-[calc(100svh-4.75rem)] h-full overflow-hidden">
                     {children}
+                    {root_modal}
                 </main>
                 <div id="modal"></div>
             </body>
