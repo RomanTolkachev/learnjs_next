@@ -8,7 +8,7 @@ type Props = {
     params: Promise<{brand: string}>
 } 
 
-export const Page: FC<Props> = async ({params}) => {
+const Page: FC<Props> = async ({params}) => {
 
     const { brand } = await params;
     const { data, isError } = await getProducts({ page: 1, limit: 20, brand });

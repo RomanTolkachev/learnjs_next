@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import { SidebarWithRackets } from '@/views/SidebarWIthRackets';
 
 
-export const Page: FC = async () => {
+const Page: FC = async () => {
 
     const { data, isError } = await getProducts({ page: 1, limit: 20 });
 
