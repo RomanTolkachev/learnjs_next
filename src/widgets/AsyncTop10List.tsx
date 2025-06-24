@@ -17,8 +17,8 @@ const AsyncTop10List: FC = async () => {
     }
 
     return (
-        <div className='h-full p-5 overflow-hidden'>
-            <ProductList className='h-full overflow-y-auto mx-auto' data={rackets}/>
+        <div className='h-full overflow-hidden'>
+            <ProductList className='h-full overflow-y-auto mx-auto px-5' data={rackets}/>
         </div>
     )
 };

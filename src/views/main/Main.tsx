@@ -6,18 +6,19 @@ import React, { FC, Suspense } from 'react';
 
 export const Main: FC = () => {
     return (
-        <section className="h-full">
-            <div className="h-full overflow-hidden grid grid-cols-2 px-4 pb-4">
-                <div className='overflow-y-scroll h-full flex items-center justify-center'>
+        <>
+            <section className="h-full px-5">
+                <div className="h-full overflow-hidden grid grid-cols-2">
+                    <div className='overflow-y-hidden h-full flex flex-col'>
+                        <Suspense fallback={<Preloader />}>
+                            <AsyncList />
+                        </Suspense>
+                    </div>
                     <Suspense fallback={<Preloader />}>
-                        <AsyncList />
+                        <Carousel />
                     </Suspense>
                 </div>
-                <Suspense fallback={<Preloader />}>
-                    <Carousel />
-                </Suspense>
-            </div>
-            <Footer />
-        </section>
+            </section>
+        </>
     );
 };
