@@ -1,21 +1,19 @@
-"use client"
 
-import { rackets } from '@/lib/mock';
-import { ProductBio } from '@/shared/ui/product_bio';
-import { useParams } from 'next/navigation';
-import React, { FunctionComponent } from 'react';
+import { Product } from '@/views/product';
+import { FC } from 'react';
 
-const Page: FunctionComponent = () => {
+interface Props {
+    params: Promise<{
+        static_nested_id: string;
+    }>;
+}
 
-    const id = Number(useParams().static_nested_id);
+const Page: FC<Props> = async ({ params }) => {
 
-    const cardData = rackets.find(item => item.id === id)
+    const { static_nested_id } = await params;
 
-    return (
-        !cardData 
-        ? <div>информация отсутствует</div>
-        : <ProductBio productData={cardData} />
-    )
+    return <Product racket_id={Number(static_nested_id)} />
+
 };
 
 export default Page;

@@ -1,4 +1,4 @@
-import { Main } from "@/views";
+import { Main } from "@/views/SidebarWIthRackets";
 
 export default async function Home() {
     

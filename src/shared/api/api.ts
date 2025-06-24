@@ -34,14 +34,19 @@ export const getTop10 = async (): Promise<Response<IProduct[]>> => {
 type params = {
     page?: number,
     limit?: number
+    brand?: string
 }
 
-export async function getProducts({ page, limit }: params): Promise<Response<IProduct[]>> {
+export async function getProducts({ page, limit, brand }: params): Promise<Response<IProduct[]>> {
 
     const params = new URLSearchParams({
         page: String(page),
         limit: String(limit),
     })
+    
+    if (brand) {
+        params.set("brand", String(brand))
+    }
 
     try {
         let res = await fetch(`${API_URL}/products?${params}`)

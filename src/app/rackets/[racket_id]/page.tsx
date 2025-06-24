@@ -1,7 +1,7 @@
 "use server"
 
 import { Product } from '@/views/product';
-import { FC, Suspense } from 'react';
+import { FC } from 'react';
 
 interface Props {
     params: Promise<{

@@ -1,5 +1,5 @@
 import { Footer } from '@/shared/ui/footer';
-import { Progress } from '@/shared/ui/progress';
+import { Preloader } from '@/shared/ui/preloader';
 import AsyncList from '@/widgets/AsyncList';
 import { Carousel } from '@/widgets/Carousel';
 import React, { FC, Suspense } from 'react';
@@ -9,11 +9,11 @@ export const Main: FC = () => {
         <section className="h-full">
             <div className="h-full overflow-hidden grid grid-cols-2 px-4 pb-4">
                 <div className='overflow-y-scroll h-full flex items-center justify-center'>
-                    <Suspense fallback={<Progress />}>
+                    <Suspense fallback={<Preloader />}>
                         <AsyncList />
                     </Suspense>
                 </div>
-                <Suspense fallback={<Progress />}>
+                <Suspense fallback={<Preloader />}>
                     <Carousel />
                 </Suspense>
             </div>

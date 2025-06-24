@@ -1,28 +1,31 @@
-"use client"
+"use server"
 
-import { rackets } from '@/lib/mock';
 import { Modal } from '@/shared/ui/modal';
-import { ProductBio } from '@/shared/ui/product_bio';
-import { useParams, useRouter } from 'next/navigation';
-import React, { FunctionComponent } from 'react';
+import { Preloader } from '@/shared/ui/preloader';
+import { Product } from '@/views/product';
+import React, { FC, Suspense } from 'react';
 
 
-const Page: FunctionComponent = () => {
+interface Props {
+    params: Promise<{
+        nested_id: string;
+    }>;
+}
 
-    const router = useRouter();
-    const id = Number(useParams().nested_id);
+const Page: FC<Props> = async ({ params }) => {
 
-    const cardData = rackets.find(item => item.id === id)
+    const { nested_id } = await params;
 
     return (
-        <Modal closeModal={router.back}>
+        <Modal>
             {
-                !cardData
-                    ? <div>информация отсутствует</div>
-                    : <ProductBio productData={cardData} />
+                <Suspense fallback={<Preloader />}>
+                    <Product racket_id={Number(nested_id)} />
+                </Suspense>
             }
         </Modal>
     );
+
 };
 
 export default Page;
