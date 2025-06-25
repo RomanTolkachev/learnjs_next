@@ -17,11 +17,9 @@ const Page: FC<Props> = async ({ params }) => {
 
     return (
         <Modal>
-            {
-                <Suspense fallback={<Preloader />}>
-                    <Product racket_id={Number(id)} />
-                </Suspense>
-            }
+            <Suspense fallback={<Preloader />}>
+                <Product racketId={Number(id)} />
+            </Suspense>
         </Modal>
     );
 };

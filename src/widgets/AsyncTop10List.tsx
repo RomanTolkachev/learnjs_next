@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { LoadError } from "@/shared/ui/load_error"
 import { ProductList } from "@/shared/ui/product_list"
 
-const AsyncTop10List: FC = async () => {
+export const AsyncTop10List: FC = async () => {
 
     const {data: rackets, isError} = await getTop10()
 
@@ -22,5 +22,3 @@ const AsyncTop10List: FC = async () => {
         </div>
     )
 };
-
-export default AsyncTop10List;

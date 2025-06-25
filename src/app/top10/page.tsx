@@ -1,6 +1,3 @@
-import AsyncTop10List from '@/widgets/AsyncTop10List';
-import { FC } from 'react';
+import { AsyncTop10List } from '@/widgets/AsyncTop10List';
 
-const page: FC = () => <AsyncTop10List />
-
-export default page;
+export default AsyncTop10List

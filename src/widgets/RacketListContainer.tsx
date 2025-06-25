@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { LoadError } from "@/shared/ui/load_error"
 import { ProductList } from "@/shared/ui/product_list"
 
-const AsyncList: FC = async () => {
+export const RacketListContainer: FC = async () => {
 
     const {data: rackets, isError} = await getProducts({page: 1, limit: 20})
 
@@ -18,5 +18,3 @@ const AsyncList: FC = async () => {
 
     return <ProductList className='lg:!grid-cols-2 xl:!grid-cols-3' data={rackets}/>
 }
-
-export default AsyncList;

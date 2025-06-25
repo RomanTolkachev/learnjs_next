@@ -4,12 +4,12 @@ import { notFound } from 'next/navigation';
 import { ProductBio } from "@/shared/ui/product_bio";
 
 interface Props {
-    racket_id: number
+    racketId: number
 }
 
-export const Product: FC<Props> = async ({ racket_id }) => {
+export const Product: FC<Props> = async ({ racketId }) => {
 
-    const { data: cardData } = await getProduct({ id: racket_id });
+    const { data: cardData } = await getProduct({ id: racketId });
 
     if (!cardData) {
         return notFound();

@@ -1,5 +1,3 @@
-"use server"
-
 import { getTop10 } from '@/shared/api';
 import { CarouselWrapper } from '@/shared/ui/carousel';
 import { LoadError } from '@/shared/ui/load_error';

@@ -3,16 +3,16 @@ import "./globals.css";
 import { Roboto } from 'next/font/google'
 import { Footer } from "@/shared/ui/footer";
 
-    const roboto = Roboto({
-        subsets: ['latin'],
-    })
+const roboto = Roboto({
+    subsets: ['latin'],
+})
 
 export default function RootLayout({
     children,
-    root_modal
+    rootModal
 }: Readonly<{
     children: React.ReactNode;
-    root_modal: React.ReactNode;
+    rootModal: React.ReactNode;
 }>) {
     return (
         <html lang="ru">
@@ -23,7 +23,7 @@ export default function RootLayout({
                 <Header />
                 <main className="flex flex-col overflow-hidden py-5">
                     {children}
-                    {root_modal}
+                    {rootModal}
                 </main>
                 <Footer />
                 <div id="modal"></div>
