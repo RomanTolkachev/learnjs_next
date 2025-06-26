@@ -4,15 +4,15 @@ import { FC } from 'react';
 
 interface Props {
     params: Promise<{
-        staticNestedId: string;
+        racketId: string;
     }>;
 }
 
 const Page: FC<Props> = async ({ params }) => {
 
-    const { staticNestedId } = await params;
+    const { racketId } = await params;
 
-    return <Product racketId={Number(staticNestedId)} />
+    return <Product racketId={Number(racketId)} />
 
 };
 

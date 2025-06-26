@@ -3,23 +3,25 @@ import { Preloader } from '@/shared/ui/preloader';
 import { Product } from '@/views/product';
 import React, { FC, Suspense } from 'react';
 
+
 interface Props {
     params: Promise<{
-        idRoot: string;
+        racketId: string;
     }>;
 }
 
 const Page: FC<Props> = async ({ params }) => {
 
-    const { idRoot } = await params;
+    const { racketId } = await params;
 
     return (
         <Modal>
             <Suspense fallback={<Preloader />}>
-                <Product racketId={Number(idRoot)} />
+                <Product racketId={Number(racketId)} />
             </Suspense>
         </Modal>
     );
+
 };
 
 export default Page;

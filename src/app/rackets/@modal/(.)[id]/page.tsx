@@ -1,5 +1,3 @@
-"use server"
-
 import { Modal } from '@/shared/ui/modal';
 import { Preloader } from '@/shared/ui/preloader';
 import { Product } from '@/views/product';

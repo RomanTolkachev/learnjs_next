@@ -3,7 +3,12 @@ import { LoadError } from '@/shared/ui/load_error';
 import { FC } from 'react';
 import { notFound } from 'next/navigation';
 import { SidebarWithRackets } from '@/views/SidebarWIthRackets';
+import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+    title: "Rackets",
+    description: "выбери ракетку мечты"
+}
 
 const Page: FC = async () => {
 

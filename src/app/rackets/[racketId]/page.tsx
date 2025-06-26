@@ -1,5 +1,3 @@
-"use server"
-
 import { Product } from '@/views/product';
 import { FC } from 'react';
 
