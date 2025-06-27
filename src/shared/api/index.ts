@@ -1,0 +1,1 @@
+export { getTop10, getProducts, getProduct } from './api'

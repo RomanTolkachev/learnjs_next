@@ -1,19 +1,24 @@
+'use client'
+
 import React, { FunctionComponent, ReactNode } from 'react';
 import { Dialog, DialogContent, DialogTitle } from './dialog';
+import { useRouter } from 'next/navigation';
 
 interface Props {
     className?: string;
     children: ReactNode
-    closeModal: () => void;
 }
 
-export const Modal: FunctionComponent<Props> = ({ className, children, closeModal }) => {
+export const Modal: FunctionComponent<Props> = ({ className, children }) => {
+
+    const router = useRouter();
+
     return (
-        <Dialog open onOpenChange={closeModal}>
-            <DialogTitle className='hidden' />
-            <DialogContent className={`${className}`}>
-                {children}
-            </DialogContent>
+        <Dialog open onOpenChange={router.back}>
+                <DialogTitle className='hidden' />
+                <DialogContent className={`${className}`}>
+                    {children}
+                </DialogContent>
         </Dialog>
     )
 };

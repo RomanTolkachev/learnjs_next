@@ -4,11 +4,10 @@ import { ProductList } from '@/shared/ui/product_list';
 import React, { FunctionComponent } from 'react';
 
 interface Props {
-    className?: string;
     filteredRackets: IProduct[]
 }
 
-const List: FunctionComponent<Props> = ({ className, filteredRackets }) => {
+const List: FunctionComponent<Props> = ({ filteredRackets }) => {
     return (
         <div className='h-full overflow-y-scroll'>
             <ProductList data={filteredRackets} className='min-h-min'/>
