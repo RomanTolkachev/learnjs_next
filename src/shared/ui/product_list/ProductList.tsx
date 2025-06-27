@@ -21,7 +21,7 @@ export const ProductList: FunctionComponent<Props> = ({ className, data }) => {
             {
                 data.map((product, key) => (
                     <li key={key}>
-                        <Link href={`${brand ? path : "rackets"}/${product.id.toString()}`} scroll={false}>
+                        <Link href={`${"/rackets"}/${product.id.toString()}`} scroll={false}>
                             <ProductCard cardData={product} />
                         </Link>
                     </li>
