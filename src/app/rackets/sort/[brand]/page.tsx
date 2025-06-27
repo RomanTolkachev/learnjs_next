@@ -3,9 +3,18 @@ import { LoadError } from '@/shared/ui/load_error';
 import { FC } from 'react';
 import { notFound } from 'next/navigation';
 import { SidebarWithRackets } from '@/views/SidebarWIthRackets';
+import { Metadata } from 'next';
 
 type Props = {
     params: Promise<{brand: string}>
+}
+
+export const generateMetadata = async ({params}: Props): Promise<Metadata> => {
+    const { brand } = await params;
+    return {
+        title: `Ракетки бренда ${brand} - отличный выбор`,
+        description: `Купи ракетки ${brand}! И другие тоже купи.`
+    }
 }
 
 const Page: FC<Props> = async ({params}) => {
