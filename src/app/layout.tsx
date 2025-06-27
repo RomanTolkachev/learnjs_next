@@ -9,10 +9,10 @@ const roboto = Roboto({
 
 export default function RootLayout({
     children,
-    rootModal
+    modal
 }: Readonly<{
     children: React.ReactNode;
-    rootModal: React.ReactNode;
+    modal: React.ReactNode;
 }>) {
     return (
         <html lang="ru">
@@ -23,7 +23,7 @@ export default function RootLayout({
                 <Header />
                 <main className="flex flex-col overflow-hidden py-5">
                     {children}
-                    {rootModal}
+                    {modal}
                 </main>
                 <Footer />
                 <div id="modal"></div>
