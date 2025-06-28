@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: "Rackets",
-    description: "выбери ракетку мечты"
+    description: "Выбери ракетку мечты."
 }
 
 const Page: FC = async () => {

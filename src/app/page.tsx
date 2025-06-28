@@ -6,5 +6,5 @@ export const metadata: Metadata = {
     description: "данный сайт поможет найти свою ракетку и не только"
 }
 
-export default Main
+export default Main;
 
