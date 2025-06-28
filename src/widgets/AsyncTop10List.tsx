@@ -1,7 +1,6 @@
 import { getTop10 } from '@/shared/api';
 import { FC } from 'react';
 import { notFound } from 'next/navigation';
-import { LoadError } from "@/shared/ui/load_error"
 import { ProductList } from "@/shared/ui/product_list"
 
 export const AsyncTop10List: FC = async () => {
@@ -13,7 +12,7 @@ export const AsyncTop10List: FC = async () => {
     }
 
     if (isError) {
-        return <LoadError />
+        throw new Error("ошибка загрузки")
     }
 
     return (

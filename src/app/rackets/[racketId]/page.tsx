@@ -20,7 +20,6 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
         }
     }
 
-    console.log("данные получены")
     return {
         title: data.name,
         description: data?.description
@@ -29,8 +28,8 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 
 const Page: FC<Props> = async ({ params }) => {
 
-    const { racketId } = await params;
-    // const { isError, data } = await getProductMeta({ id: racketId })
+    const { racketId, } = await params;
+    const {} = await getProductMeta({ id: racketId })
 
     return <Product racketId={Number(racketId)} />
 

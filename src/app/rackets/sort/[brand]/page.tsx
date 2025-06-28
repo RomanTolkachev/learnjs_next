@@ -1,5 +1,4 @@
 import { getProducts } from '@/shared/api';
-import { LoadError } from '@/shared/ui/load_error';
 import { FC } from 'react';
 import { notFound } from 'next/navigation';
 import { SidebarWithRackets } from '@/views/SidebarWIthRackets';
@@ -23,7 +22,7 @@ const Page: FC<Props> = async ({params}) => {
     const { data, isError } = await getProducts({ page: 1, limit: 20, brand });
 
     if (isError) {
-        return <LoadError />
+        throw new Error("ошибка загрузки")
     }
 
     if (!data || !data.length) {
