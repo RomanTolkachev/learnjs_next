@@ -12,7 +12,6 @@ interface Props {
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
     const { racketId } = await params;
     const { isError, data } = await getProductMeta({ id: racketId })
-    console.log(data)
     if (isError || !data) {
         return {
             title: "Теннисная ракетка",
@@ -28,9 +27,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 
 const Page: FC<Props> = async ({ params }) => {
 
-    const { racketId, } = await params;
-    const {} = await getProductMeta({ id: racketId })
-
+    const { racketId } = await params;
     return <Product racketId={Number(racketId)} />
 
 };

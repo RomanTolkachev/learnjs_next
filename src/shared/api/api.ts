@@ -6,7 +6,7 @@ const API_URL = "http://localhost:4000/api";
 
 export const getTop10 = async (): Promise<Response<IProduct[]>> => {
     try {
-        let res = await fetch(`${API_URL}/top-10`, { next: { tags: ["getTop10"] } })
+        const res = await fetch(`${API_URL}/top-10`, { next: { tags: ["getTop10"] } })
         if (res.status === 404) {
             return { data: undefined, isError: false }
         }
