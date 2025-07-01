@@ -1,1 +1,1 @@
-export { getTop10, getProducts, getProduct } from './api'
+export { getTop10, getProducts, getProduct, getProductMeta } from './api'
