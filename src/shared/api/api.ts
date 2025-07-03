@@ -1,6 +1,7 @@
-import { IProduct } from "@/entities";
+import { IProduct, TUser } from "@/entities";
 import { Response } from "./types"
 import { URLSearchParams } from "url";
+import { cookies } from "next/headers";
 
 const API_URL = "http://localhost:4000/api";
 
@@ -113,6 +114,36 @@ export async function getProductMeta({ id }: propParam): Promise<Response<IProdu
             data: (await res.json()).product
         }
     } catch (err) {
+        return {
+            isError: true,
+            data: undefined
+        }
+    }
+}
+
+export const getUser = async (): Promise<Response<TUser>> => {
+
+    const cookieStorage = await cookies();
+
+    try {
+        const res = await fetch(`${API_URL}/auth/user`, {
+            credentials: "include",
+            headers: {
+                Cookie: cookieStorage.toString(),
+            }
+        })
+
+        if (res.status === 401) {
+            return {
+                isError: false,
+                data: undefined
+            }
+        }
+        return {
+            isError: false,
+            data: (await res.json()).data
+        }
+    } catch {
         return {
             isError: true,
             data: undefined

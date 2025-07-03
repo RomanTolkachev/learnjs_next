@@ -3,6 +3,7 @@ import "./globals.css";
 import { Roboto } from 'next/font/google'
 import { Footer } from "@/shared/ui/footer";
 import NextTopLoader from "nextjs-toploader";
+import { UserProvider } from "@/providers/UserProvider";
 
 const roboto = Roboto({
     subsets: ['latin'],

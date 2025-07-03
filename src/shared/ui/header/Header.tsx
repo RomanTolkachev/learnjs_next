@@ -25,6 +25,9 @@ export const Header: FunctionComponent<Props> = ({ className }) => {
                 <Button asChild variant="link" isActive={pathname.includes("rackets")}>
                     <Link href="/rackets">ракетки</Link>
                 </Button>
+                <Button asChild variant="link" isActive={pathname.includes("login")}>
+                    <Link href="/login">войти</Link>
+                </Button>
             </nav>
         </header>
     );
