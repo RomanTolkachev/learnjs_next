@@ -1,31 +1,36 @@
 "use server"
 
-import { cookies } from "next/headers";
-import { LoginFormState } from "../model";
 import { parseSetCookie } from "@/shared/api";
+import { cookies } from "next/headers";
+import { defaultState, TRegisterState } from "../model";
+import { error } from "console";
 
-export const tryLogin = async (prevState: LoginFormState, formData: FormData) => {
+export const tryRegister = async (prevState: TRegisterState, formData: FormData) => {
     const login = formData.get("login")?.toString() || "";
     const password = formData.get("password")?.toString() || "";
 
     if (!login) {
         return {
+            ...defaultState,
             fieldErrors: {
-                login: "введите логин"
+                login: "введите логин",
+                password: ""
             }
         }
     }
 
     if (!password) {
         return {
+            ...defaultState,
             fieldErrors: {
-                password: "введите пароль"
+                login: "",
+                password: "придумайте пароль"
             }
         }
     }
 
     try {
-        const result = await fetch('http://localhost:4000/api/auth/login', {
+        const result = await fetch('http://localhost:4000/api/auth/signup', {
             method: "POST",
             body: JSON.stringify({
                 login,
@@ -37,7 +42,10 @@ export const tryLogin = async (prevState: LoginFormState, formData: FormData) =>
         });
 
         if (!result.ok) {
-            return { error: "invalid login or password" }
+            return {
+                ...defaultState,
+                error: await result.json() ?? "ошибка"
+            }
         }
 
         const cookiesStore = await cookies();
@@ -50,7 +58,7 @@ export const tryLogin = async (prevState: LoginFormState, formData: FormData) =>
             }
         }
 
-        return { success: true };
+        return {...defaultState, success: true };
 
     } catch (err: unknown) {
         const errorMessage = err instanceof Error
@@ -59,7 +67,7 @@ export const tryLogin = async (prevState: LoginFormState, formData: FormData) =>
                 ? err
                 : 'Unknown error';
 
-        return { error: errorMessage };
+        return {...defaultState, error: errorMessage };
     }
 
 }

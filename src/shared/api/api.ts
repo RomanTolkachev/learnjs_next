@@ -68,8 +68,14 @@ type propParam = {
 }
 
 export async function getProduct({ id }: propParam): Promise<Response<IProduct>> {
+
+    const cookieStore = await cookies();
     try {
-        const res = await fetch(`${API_URL}/product/${id}`)
+        const res = await fetch(`${API_URL}/product/${id}`, {
+            headers: {
+                Cookie: cookieStore.toString()
+            }
+        })
         if (!res.ok) {
             return {
                 isError: true,

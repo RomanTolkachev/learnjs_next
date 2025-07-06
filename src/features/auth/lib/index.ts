@@ -1,1 +1,0 @@
-export { parseSetCookie } from './parseSetCookie'

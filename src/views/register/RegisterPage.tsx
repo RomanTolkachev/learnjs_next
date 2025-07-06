@@ -1,11 +1,11 @@
 "use client"
 
-import { LoginForm } from "@/features/auth";
+import { RegisterForm } from "@/features/register";
 import { AuthContext } from "@/providers/UserProvider";
 import { redirect } from "next/navigation";
 import { FC, use } from "react";
 
-export const LoginPage: FC = () => {
+export const RegisterPage: FC = () => {
 
     const { user } = use(AuthContext);
 
@@ -15,7 +15,7 @@ export const LoginPage: FC = () => {
 
     return (
         <section className="h-full w-full flex items-center justify-center py-20">
-            <LoginForm />
+            <RegisterForm />
         </section>
     )
 }

@@ -1,7 +1,6 @@
 "use server"
 
-import { parseSetCookie } from "@/features/auth/lib";
-import { logOut } from "@/shared/api";
+import { logOut, parseSetCookie } from "@/shared/api";
 import { cookies } from "next/headers";
 
 type TResponse = {

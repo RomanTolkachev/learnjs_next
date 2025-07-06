@@ -12,9 +12,9 @@ type Props = {
 
 export const UserData: FC<Props> = ({ data }) => {
     return (
-        <Table>
+        <Table className="text-center">
             <TableCaption >Личная информация</TableCaption>
-            <TableHeader>
+            <TableHeader className="[&_*]:!text-center">
                 <TableRow>
                     <TableHead>Логин</TableHead>
                     <TableHead>Права</TableHead>

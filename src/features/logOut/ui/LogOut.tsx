@@ -1,6 +1,6 @@
 "use client"
 
-import { FC, useActionState, useEffect } from "react";
+import { FC, useActionState } from "react";
 import { tryLogOut } from "../api";
 import { Button } from "@/shared/ui/button";
 import { Loader } from "./Message";
