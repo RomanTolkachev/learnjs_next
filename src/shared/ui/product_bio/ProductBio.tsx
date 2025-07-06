@@ -1,16 +1,20 @@
 "use client"
 
 import { IProduct } from '@/entities';
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, use } from 'react';
 import Image from 'next/image'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card';
 import { Button } from './button';
+import { AuthContext } from '@/providers/UserProvider';
+import { Heart } from 'lucide-react';
 
 
 interface Prop {
     cardData: IProduct
 }
 export const ProductBio: FunctionComponent<Prop> = ({ cardData }) => {
+
+    const { user } = use(AuthContext)
 
     return (
         <div className={`max-w-3xl mx-auto grid grid-cols-[2fr_1fr]`}>
@@ -29,10 +33,15 @@ export const ProductBio: FunctionComponent<Prop> = ({ cardData }) => {
                     </Button>
                 </CardFooter>
             </Card>
-            <div>
+            <div className='relative'>
                 <div className='relative h-120 radial-mask aspect-[2/3] place-self-center'>
                     <Image alt='img' src={cardData.imageUrl} priority fill className='object-contain' sizes="500px" />
                 </div>
+                {!!user?.login && <div className='absolute bottom-0 right-0 p-2 z-10'>
+                    <Button variant="secondary" isActive >
+                        <Heart />
+                    </Button>
+                </div>}
             </div>
         </div>
     );

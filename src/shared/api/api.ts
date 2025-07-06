@@ -141,7 +141,7 @@ export const getUser = async (): Promise<Response<TUser>> => {
         }
         return {
             isError: false,
-            data: (await res.json()).data
+            data: (await res.json()).user
         }
     } catch {
         return {
@@ -149,4 +149,15 @@ export const getUser = async (): Promise<Response<TUser>> => {
             data: undefined
         }
     }
+}
+
+export const logOut = async (): Promise<globalThis.Response> => {
+    const cookieStorage = await cookies();
+    return fetch(`${API_URL}/auth/logout`, {
+        credentials: "include",
+        method: "DELETE",
+        headers: {
+            Cookie: cookieStorage.toString(),
+        }
+    })
 }

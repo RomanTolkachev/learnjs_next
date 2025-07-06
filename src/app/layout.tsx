@@ -1,9 +1,6 @@
-import { Header } from "@/shared/ui/header";
 import "./globals.css";
 import { Roboto } from 'next/font/google'
-import { Footer } from "@/shared/ui/footer";
 import NextTopLoader from "nextjs-toploader";
-import { UserProvider } from "@/providers/UserProvider";
 
 const roboto = Roboto({
     subsets: ['latin'],
@@ -11,10 +8,8 @@ const roboto = Roboto({
 
 export default function RootLayout({
     children,
-    modal
 }: Readonly<{
     children: React.ReactNode;
-    modal: React.ReactNode;
 }>) {
     return (
         <html lang="ru">
@@ -23,12 +18,7 @@ export default function RootLayout({
             </head>
             <body className={`${roboto.className} h-svh overflow-hidden grid grid-rows-[auto_1fr_auto]`}>
                 <NextTopLoader />
-                <Header />
-                <main className="flex flex-col overflow-hidden py-5">
-                    {children}
-                    {modal}
-                </main>
-                <Footer />
+                {children}
                 <div id="modal"></div>
             </body>
         </html>

@@ -1,18 +1,19 @@
 
 import React, { FunctionComponent } from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './card';
+import { Heart } from 'lucide-react';
 import { IProduct } from '@/entities';
 import Image from 'next/image'
 
 interface Props {
-    className?: string;
     cardData: IProduct
+    canBeFavorite?: boolean
 }
 
-export const ProductCard: FunctionComponent<Props> = ({ className, cardData }) => {
+export const ProductCard: FunctionComponent<Props> = ({ canBeFavorite, cardData }) => {
     return (
         <Card className='min-w-56 max-w-sm grid grid-rows-[auto_1fr_auto]'>
-            <CardHeader className='text-xl font-bold min-h-12'>
+            <CardHeader className='text-xl font-bold min-h-12 flex justify-center'>
                 <CardTitle>{cardData?.name ?? "Заголовок"}</CardTitle>
             </CardHeader>
             <CardContent>
@@ -22,7 +23,7 @@ export const ProductCard: FunctionComponent<Props> = ({ className, cardData }) =
                 <span>{cardData.price} $</span>
             </CardContent>
             <CardFooter>
-                Футер
+                {canBeFavorite && <div className='w-full flex justify-end'><Heart /></div>}
             </CardFooter>
         </Card>
     );

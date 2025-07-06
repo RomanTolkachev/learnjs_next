@@ -26,7 +26,7 @@ export const LoginForm: FC = () => {
     useEffect(() => {
         if (success) {
             if (history.length > 1) {
-                setTimeout(() => router.back(), 1000)
+                setTimeout(() => router.push('/personal'), 1000)
             } else {
                 setTimeout(() => router.push('/'), 1000)
             }

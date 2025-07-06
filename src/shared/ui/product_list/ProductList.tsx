@@ -1,10 +1,11 @@
 "use client"
 
 import Link from 'next/link';
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, use } from 'react';
 import { ProductCard } from '../product_card';
 import { IProduct } from '@/entities';
 import { useParams, usePathname } from 'next/navigation';
+import { AuthContext } from '@/providers/UserProvider';
 
 interface Props {
     className?: string;
@@ -13,8 +14,7 @@ interface Props {
 
 export const ProductList: FunctionComponent<Props> = ({ className, data }) => {
 
-    const { brand } = useParams();
-    const path = usePathname()
+   const { user } = use(AuthContext);
 
     return (
         <ul className={`${className} grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 h-full overflow-x-hidden`}>
@@ -22,7 +22,7 @@ export const ProductList: FunctionComponent<Props> = ({ className, data }) => {
                 data.map((product, key) => (
                     <li key={key}>
                         <Link href={`${"/rackets"}/${product.id.toString()}`} scroll={false}>
-                            <ProductCard cardData={product} />
+                            <ProductCard canBeFavorite={!!user?.login} cardData={product} />
                         </Link>
                     </li>
                 ))
