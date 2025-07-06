@@ -18,3 +18,5 @@ const Page: FC = () => {
         </section>
     )
 }
+
+export default Page;

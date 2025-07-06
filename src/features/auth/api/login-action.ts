@@ -3,6 +3,7 @@
 import { cookies } from "next/headers";
 import { LoginFormState } from "../model";
 import { parseSetCookie } from "@/shared/api";
+import { defaultState } from "../model/defaultState";
 
 export const tryLogin = async (prevState: LoginFormState, formData: FormData) => {
     const login = formData.get("login")?.toString() || "";
@@ -10,15 +11,19 @@ export const tryLogin = async (prevState: LoginFormState, formData: FormData) =>
 
     if (!login) {
         return {
+            ...defaultState,
             fieldErrors: {
-                login: "введите логин"
+                login: "введите логин",
+                password: ""
             }
         }
     }
 
     if (!password) {
         return {
+            ...defaultState,
             fieldErrors: {
+                login: "",
                 password: "введите пароль"
             }
         }
@@ -37,7 +42,7 @@ export const tryLogin = async (prevState: LoginFormState, formData: FormData) =>
         });
 
         if (!result.ok) {
-            return { error: "invalid login or password" }
+            return { ...defaultState, error: "invalid login or password" }
         }
 
         const cookiesStore = await cookies();
@@ -59,7 +64,7 @@ export const tryLogin = async (prevState: LoginFormState, formData: FormData) =>
                 ? err
                 : 'Unknown error';
 
-        return { error: errorMessage };
+        return { ...defaultState, error: errorMessage };
     }
 
 }

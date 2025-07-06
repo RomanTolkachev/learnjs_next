@@ -1,1 +1,1 @@
-export type { LoginFormState } from './formState'
+export type { LoginFormState } from './model'
