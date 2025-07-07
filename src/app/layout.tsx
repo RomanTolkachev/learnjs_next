@@ -17,7 +17,7 @@ export default function RootLayout({
                 <link rel="icon" type="image/png" href="favicon.png" />
             </head>
             <body className={`${roboto.className} h-svh overflow-hidden grid grid-rows-[auto_1fr_auto]`}>
-                <NextTopLoader />
+                <NextTopLoader showSpinner={false}/>
                 {children}
                 <div id="modal"></div>
             </body>

@@ -6,7 +6,9 @@ import { FC, useActionState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { tryRegister } from "../api";
 import { defaultState, TRegisterState } from "../model";
-import { Success, Error, Loader } from "./ResultMessages";
+import { Success } from "./Success";
+import { Loader } from "./Loader";
+import { Error } from "./Error"
 
 export const RegisterForm: FC = () => {
 

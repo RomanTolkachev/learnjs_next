@@ -31,7 +31,7 @@ export const LoginForm: FC = () => {
                 setTimeout(() => router.push('/'), 1000)
             }
         }
-    }, [success])
+    }, [success, router])
 
     return (
         <form className="flex flex-col gap-8" action={loginAction}>

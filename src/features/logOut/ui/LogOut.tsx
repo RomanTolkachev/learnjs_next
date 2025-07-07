@@ -3,7 +3,7 @@
 import { FC, useActionState } from "react";
 import { tryLogOut } from "../api";
 import { Button } from "@/shared/ui/button";
-import { Loader } from "./Message";
+import { Loader } from "./Loader";
 
 const initialState = {
     message: "",
