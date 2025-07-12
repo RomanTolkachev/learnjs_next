@@ -24,13 +24,23 @@ export const LoginForm: FC = () => {
     const [{ error, fieldErrors, success }, loginAction, isPending] = useActionState<LoginFormState, FormData>(tryLogin, initialState)
 
     useEffect(() => {
+
+        let timer: NodeJS.Timeout;
+
         if (success) {
             if (history.length > 1) {
-                setTimeout(() => router.push('/personal'), 1000)
+                timer = setTimeout(() => router.push('/personal'), 1000)
             } else {
-                setTimeout(() => router.push('/'), 1000)
+                timer = setTimeout(() => router.push('/'), 1000)
+            }  
+        }
+
+        return () => {
+            if (timer) {
+                clearTimeout(timer);
             }
         }
+
     }, [success, router])
 
     return (
