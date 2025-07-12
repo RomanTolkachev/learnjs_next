@@ -1,0 +1,1 @@
+export { Table, TableBody, TableRow, TableHeader, TableHead, TableCell, TableCaption } from "./Table"

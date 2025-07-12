@@ -1,0 +1,1 @@
+export type { LoginFormState } from './model'

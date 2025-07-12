@@ -1,0 +1,1 @@
+export { tryRegister } from "./register-action"
