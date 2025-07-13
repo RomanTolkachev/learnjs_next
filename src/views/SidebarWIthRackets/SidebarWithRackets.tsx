@@ -24,7 +24,7 @@ export const SidebarWithRackets: FC<Props> = ({rackets}) => {
                     <SidebarSelect
                         values={brandValues}
                         currentValue={brand as IBrand ?? "All"}
-                        setter={to => router.push(to === "All" ? "/rackets" : `rackets/sort/${to}`)}
+                        setter={to => router.push(to === "All" ? "/rackets" : `/rackets/sort/${to}`)}
                     />
                 </aside>
                 <List filteredRackets={rackets}/>

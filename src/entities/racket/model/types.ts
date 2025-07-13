@@ -1,3 +1,10 @@
+type UserData = {
+    id: string
+    isFavorite: boolean
+    productId: number
+    userId: number
+}
+
 export interface IProduct {
     id: number
     name: string
@@ -13,4 +20,5 @@ export interface IProduct {
         id: number
         name: string
     }
+    userData?: UserData
 }

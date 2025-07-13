@@ -1,3 +1,4 @@
+import { FavoriteContextProvider } from "@/providers/FavoriteProvider";
 import { UserProvider } from "@/providers/UserProvider";
 import { getUser } from "@/shared/api";
 import { Footer } from "@/shared/ui/footer";
@@ -13,14 +14,16 @@ const Layout: FC<PropsWithChildren<Props>> = async ({ children, modal }) => {
     const { data } = await getUser();
 
     return (
+            <FavoriteContextProvider>
         <UserProvider user={data}>
-            <Header />
-            <main className="flex flex-col overflow-hidden py-5">
-                {children}
-                {modal}
-            </main>
-            <Footer />
+                <Header />
+                <main className="flex flex-col overflow-hidden py-5">
+                    {children}
+                    {modal}
+                </main>
+                <Footer />
         </UserProvider>
+            </FavoriteContextProvider>
     )
 }
 

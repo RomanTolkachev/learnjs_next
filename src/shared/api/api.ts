@@ -6,8 +6,14 @@ import { cookies } from "next/headers";
 const API_URL = "http://localhost:4000/api";
 
 export const getTop10 = async (): Promise<Response<IProduct[]>> => {
+    const cookieStore = await cookies();
     try {
-        const res = await fetch(`${API_URL}/top-10`, { next: { tags: ["getTop10"] } })
+        const res = await fetch(`${API_URL}/top-10`, {
+            next: { tags: ["getTop10"] },
+            headers: {
+                Cookie: cookieStore.toString(),
+            }
+        },)
         if (res.status === 404) {
             return { data: undefined, isError: false }
         }
@@ -36,8 +42,15 @@ export async function getProducts({ page, limit, brand }: params): Promise<Respo
     if (brand) {
         params.set("brand", String(brand))
     }
+
+    const cookieStore = await cookies();
+
     try {
-        let res = await fetch(`${API_URL}/products?${params}`)
+        let res = await fetch(`${API_URL}/products?${params}`, {
+            headers: {
+                Cookie: cookieStore.toString(),
+            },
+        })
         if (!res.ok) {
             return {
                 isError: true,

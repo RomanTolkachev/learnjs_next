@@ -1,9 +1,12 @@
+"use client"
 
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, use, useEffect } from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './card';
-import { Heart } from 'lucide-react';
 import { IProduct } from '@/entities';
 import Image from 'next/image'
+import { FavoriteButton } from '@/features/handleFavorite';
+import { useIsFavorite } from '@/features/handleFavorite/lib/useIsFavorite';
+import { FavoriteContext } from '@/providers/FavoriteProvider';
 
 interface Props {
     cardData: IProduct
@@ -11,6 +14,19 @@ interface Props {
 }
 
 export const ProductCard: FunctionComponent<Props> = ({ canBeFavorite, cardData }) => {
+
+    const { setContextFavorite } = use(FavoriteContext);
+
+    const isFavorite = Array.isArray(cardData.userData)
+        ? cardData.userData[0]?.isFavorite ?? false
+        : false;
+
+    useEffect(() => {
+        setContextFavorite({ id: cardData.id, isFavorite })
+    }, [cardData.id, isFavorite, setContextFavorite])
+
+    const isFavoriteComputed = useIsFavorite({ id: cardData.id })
+
     return (
         <Card className='min-w-56 max-w-sm grid grid-rows-[auto_1fr_auto]'>
             <CardHeader className='text-xl font-bold min-h-12 flex justify-center'>
@@ -23,7 +39,11 @@ export const ProductCard: FunctionComponent<Props> = ({ canBeFavorite, cardData 
                 <span>{cardData.price} $</span>
             </CardContent>
             <CardFooter>
-                {canBeFavorite && <div className='w-full flex justify-end'><Heart /></div>}
+                {canBeFavorite &&
+                    <div className='w-full flex justify-end'>
+                        <FavoriteButton isFavoriteInitial={isFavoriteComputed} racketId={cardData.id} />
+                    </div>
+                }
             </CardFooter>
         </Card>
     );

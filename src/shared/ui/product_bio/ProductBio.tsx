@@ -1,12 +1,14 @@
 "use client"
 
 import { IProduct } from '@/entities';
-import React, { FunctionComponent, use } from 'react';
+import React, { FunctionComponent, use, useEffect } from 'react';
 import Image from 'next/image'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card';
 import { Button } from './button';
 import { AuthContext } from '@/providers/UserProvider';
-import { Heart } from 'lucide-react';
+import { FavoriteButton } from '@/features/handleFavorite';
+import { useIsFavorite } from '@/features/handleFavorite/lib';
+import { FavoriteContext } from '@/providers/FavoriteProvider';
 
 
 interface Prop {
@@ -14,7 +16,16 @@ interface Prop {
 }
 export const ProductBio: FunctionComponent<Prop> = ({ cardData }) => {
 
-    const { user } = use(AuthContext)
+    const { user } = use(AuthContext);
+    const { setContextFavorite } = use(FavoriteContext);
+
+    const isFavorite = cardData.userData?.isFavorite ?? false
+
+    useEffect(() => {
+        setContextFavorite({ id: cardData.id, isFavorite })
+    }, [cardData.id, isFavorite, setContextFavorite])
+
+    const isFavoriteComputed = useIsFavorite({ id: cardData.id });
 
     return (
         <div className={`max-w-3xl mx-auto grid grid-cols-[2fr_1fr]`}>
@@ -38,11 +49,12 @@ export const ProductBio: FunctionComponent<Prop> = ({ cardData }) => {
                     <Image alt='img' src={cardData.imageUrl} priority fill className='object-contain' sizes="500px" />
                 </div>
                 {!!user?.login && <div className='absolute bottom-0 right-0 p-2 z-10'>
-                    <Button variant="secondary" isActive >
-                        <Heart />
+                    <Button asChild variant="secondary" isActive >
+                        <FavoriteButton isFavoriteInitial={isFavoriteComputed} racketId={cardData.id} />
                     </Button>
                 </div>}
             </div>
         </div>
     );
 };
+

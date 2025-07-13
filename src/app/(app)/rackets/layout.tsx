@@ -1,4 +1,4 @@
-import React, { FunctionComponent, PropsWithChildren, ReactNode } from 'react';
+import React, { FunctionComponent, PropsWithChildren } from 'react';
 
 const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
     return (

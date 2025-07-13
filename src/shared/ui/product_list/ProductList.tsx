@@ -4,7 +4,6 @@ import Link from 'next/link';
 import React, { FunctionComponent, use } from 'react';
 import { ProductCard } from '../product_card';
 import { IProduct } from '@/entities';
-import { useParams, usePathname } from 'next/navigation';
 import { AuthContext } from '@/providers/UserProvider';
 
 interface Props {
