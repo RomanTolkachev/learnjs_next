@@ -1,7 +1,8 @@
-import { getProductMeta } from '@/shared/api';
+import { getProduct, getProductMeta } from '@/shared/api';
 import { Product } from '@/views/product';
 import { Metadata } from 'next';
-import { FC } from 'react';
+import { FC, Suspense } from 'react';
+import { SWRConfig } from 'swr';
 
 interface Props {
     params: Promise<{
@@ -28,7 +29,20 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 const Page: FC<Props> = async ({ params }) => {
 
     const { racketId } = await params;
-    return <Product racketId={Number(racketId)} />
+    return (
+        <Suspense fallback={"SWR suspense"}>
+            <SWRConfig
+                value={{
+                    fallback: {
+                        [`product/${racketId}`]: getProduct({ id: racketId }),
+                    },
+                    revalidateOnFocus: false,
+                }}
+            >
+                <Product racketId={Number(racketId)} />
+            </SWRConfig>
+        </Suspense>
+    )
 
 };
 

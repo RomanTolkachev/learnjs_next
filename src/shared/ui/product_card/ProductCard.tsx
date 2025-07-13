@@ -21,7 +21,7 @@ export const ProductCard: FunctionComponent<Props> = ({ canBeFavorite, cardData 
         ? cardData.userData[0]?.isFavorite ?? false
         : false;
 
-    useEffect(() => {
+    useEffect(() => { // Андрей, я видел, что это лучше вынести в хук, но для наглядности самому себе - сдалал так.
         setContextFavorite({ id: cardData.id, isFavorite })
     }, [cardData.id, isFavorite, setContextFavorite])
 
