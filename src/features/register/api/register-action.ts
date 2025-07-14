@@ -3,9 +3,8 @@
 import { parseSetCookie } from "@/shared/api";
 import { cookies } from "next/headers";
 import { defaultState, TRegisterState } from "../model";
-import { error } from "console";
 
-export const tryRegister = async (prevState: TRegisterState, formData: FormData) => {
+export const tryRegister = async (_: TRegisterState, formData: FormData) => {
     const login = formData.get("login")?.toString() || "";
     const password = formData.get("password")?.toString() || "";
 

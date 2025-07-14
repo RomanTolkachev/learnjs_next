@@ -38,14 +38,14 @@ export const Product: FC<Props> = ({ racketId }) => {
     const { data, isLoading } = useSWR<Response<IProduct>>(
         `product/${racketId}`,
         fetcher,
-        { suspense: true, revalidateIfStale: false, revalidateOnFocus: false }
+        {suspense: true, revalidateIfStale: false, revalidateOnFocus: false }
     );
 
     if (isLoading) {
         return <Preloader />;
     }
 
-    if (!data?.data) {
+    if (!data?.data ) {
         return notFound();
     }
 

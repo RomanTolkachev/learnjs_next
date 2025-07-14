@@ -5,7 +5,7 @@ import { LoginFormState } from "../model";
 import { parseSetCookie } from "@/shared/api";
 import { defaultState } from "../model/defaultState";
 
-export const tryLogin = async (prevState: LoginFormState, formData: FormData) => {
+export const tryLogin = async (_: LoginFormState, formData: FormData) => {
     const login = formData.get("login")?.toString() || "";
     const password = formData.get("password")?.toString() || "";
 

@@ -1,6 +1,6 @@
 import { Modal } from '@/shared/ui/modal';
 import { LoginPage } from '@/views/login';
-import React, { FC, Suspense } from 'react';
+import React, { FC } from 'react';
 
 const Page: FC = async () => {
     return (
