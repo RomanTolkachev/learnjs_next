@@ -15,9 +15,8 @@ interface Props {
     initialData: IProduct[]
 }
 
-export const RacketListContainer: FC<Props> = ({ initialData }) => {
 
-    console.log("из дочернего", getKey(initialData))
+export const RacketListContainer: FC<Props> = ({ initialData }) => {
 
     const { data, error, isLoading, size, setSize } = useSWRInfinite<IProduct[]>(
         getKey(initialData),
@@ -31,8 +30,7 @@ export const RacketListContainer: FC<Props> = ({ initialData }) => {
     );
 
     const products: IProduct[] = data ? ([] as IProduct[]).concat(...data) : [];
-
-
+    
     const isLoadingMore = isLoading || (size > 0 && data && typeof data[size - 1] === "undefined");
     const isEmpty = data?.[0]?.length === 0;
     const isReachingEnd = isEmpty || (data && data[data.length - 1]?.length < LIMIT);
