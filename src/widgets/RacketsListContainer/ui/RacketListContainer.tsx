@@ -17,6 +17,8 @@ interface Props {
 
 export const RacketListContainer: FC<Props> = ({ initialData }) => {
 
+    console.log("из дочернего", getKey(initialData))
+
     const { data, error, isLoading, size, setSize } = useSWRInfinite<IProduct[]>(
         getKey(initialData),
         fetcher,

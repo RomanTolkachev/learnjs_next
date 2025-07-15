@@ -1,1 +1,0 @@
-export { useIsFavorite } from "./useIsFavorite";

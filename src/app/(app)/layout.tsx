@@ -1,4 +1,5 @@
-import { FavoriteContextProvider } from "@/providers/FavoriteProvider";
+
+import { FavoriteContextProvider } from "@/features/favorite";
 import { UserProvider } from "@/providers/UserProvider";
 import { getUser } from "@/shared/api";
 import { Footer } from "@/shared/ui/footer";

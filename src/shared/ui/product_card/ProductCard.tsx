@@ -4,9 +4,8 @@ import React, { FunctionComponent, use, useEffect } from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './card';
 import { IProduct } from '@/entities';
 import Image from 'next/image'
-import { FavoriteButton } from '@/features/handleFavorite';
-import { useIsFavorite } from '@/features/handleFavorite/lib/useIsFavorite';
-import { FavoriteContext } from '@/providers/FavoriteProvider';
+import { FavoriteButton, FavoriteContext } from '@/features/favorite';
+import { useIsFavorite } from '@/features/favorite/lib/hooks/useIsFavorite';
 
 interface Props {
     cardData: IProduct

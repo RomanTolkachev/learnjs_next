@@ -1,5 +1,5 @@
 import { IProduct } from "@/entities";
-import { API_URL } from "../config";
+import { API_URL } from "@/shared/config";
 
 export const fetcher = async (path: string | IProduct[] | undefined) => {
   if (typeof path !== "string" && path !== undefined) {

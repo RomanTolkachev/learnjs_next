@@ -2,9 +2,8 @@
 
 import { Heart } from "lucide-react";
 import React, { FC, use } from "react";
-import { handleSubmit } from "./handleSubmit";
-import { FavoriteContext } from "@/providers/FavoriteProvider";
-import { useIsFavorite } from "./lib";
+import { toggleFavorite, useIsFavorite } from "../lib";
+import { FavoriteContext } from "../providers";
 
 interface Props {
     isFavoriteInitial: boolean
@@ -21,7 +20,7 @@ export const FavoriteButton: FC<Props> = ({ racketId, isFavoriteInitial }) => {
         e.stopPropagation();
         e.preventDefault()
         setContextFavorite({id: racketId, isFavorite: !isFavorite})
-        await handleSubmit(isFavorite, racketId);
+        await toggleFavorite(isFavorite, racketId);
     }
 
     return (

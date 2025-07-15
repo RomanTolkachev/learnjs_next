@@ -1,7 +1,6 @@
+import { API_URL } from "@/shared/config";
 
-const API_URL = "http://localhost:4000/api"
-
-export async function handleSubmit(isFavorite: boolean, racketId: number) {
+export async function toggleFavorite(isFavorite: boolean, racketId: number) {
 
     const url = `${API_URL}/product/${racketId}/favorite`;
 

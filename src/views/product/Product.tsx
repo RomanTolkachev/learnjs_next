@@ -8,44 +8,43 @@ import { IProduct } from "@/entities";
 import useSWR from "swr";
 import { Response } from "@/shared/api"
 import { Preloader } from "@/shared/ui/preloader";
+import { API_URL } from "@/shared/config";
 
 interface Props {
     racketId: number
 }
 
-const API_URL = "http://localhost:4000/api";
+const fetcher = async (path: string) => {
+    const result = await fetch(`${API_URL}/${path}`, {
+        credentials: "include",
+    });
+
+    if (result.status === 404) {
+        return { isError: false, data: undefined };
+    }
+
+    if (!result.ok) {
+        return { isError: true, data: undefined };
+    }
+
+    const data: { product: IProduct } = await result.json();
+
+    return { isError: false, data: data.product };
+};
 
 export const Product: FC<Props> = ({ racketId }) => {
-
-    const fetcher = async (path: string) => {
-        const result = await fetch(`${API_URL}/${path}`, {
-            credentials: "include",
-        });
-
-        if (result.status === 404) {
-            return { isError: false, data: undefined };
-        }
-
-        if (!result.ok) {
-            return { isError: true, data: undefined };
-        }
-
-        const data: { product: IProduct } = await result.json();
-
-        return { isError: false, data: data.product };
-    };
 
     const { data, isLoading } = useSWR<Response<IProduct>>(
         `product/${racketId}`,
         fetcher,
-        {suspense: true, revalidateIfStale: false, revalidateOnFocus: false }
+        { suspense: true, revalidateIfStale: false, revalidateOnFocus: false }
     );
 
     if (isLoading) {
         return <Preloader />;
     }
 
-    if (!data?.data ) {
+    if (!data?.data) {
         return notFound();
     }
 

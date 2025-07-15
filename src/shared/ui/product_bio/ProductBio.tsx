@@ -6,9 +6,8 @@ import Image from 'next/image'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card';
 import { Button } from './button';
 import { AuthContext } from '@/providers/UserProvider';
-import { FavoriteButton } from '@/features/handleFavorite';
-import { useIsFavorite } from '@/features/handleFavorite/lib';
-import { FavoriteContext } from '@/providers/FavoriteProvider';
+import { FavoriteButton, FavoriteContext } from '@/features/favorite';
+import { useIsFavorite } from '@/features/favorite/lib';
 
 
 interface Prop {

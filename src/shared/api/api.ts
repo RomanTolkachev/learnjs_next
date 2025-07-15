@@ -2,8 +2,7 @@ import { IProduct, TUser } from "@/entities";
 import { Response } from "./types"
 import { URLSearchParams } from "url";
 import { cookies } from "next/headers";
-
-const API_URL = "http://localhost:4000/api";
+import { API_URL } from "../config";
 
 export const getTop10 = async (): Promise<Response<IProduct[]>> => {
     const cookieStore = await cookies();

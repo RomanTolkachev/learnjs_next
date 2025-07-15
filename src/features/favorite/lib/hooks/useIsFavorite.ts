@@ -1,8 +1,8 @@
 "use client"
 
 import { IProduct } from "@/entities";
-import { FavoriteContext } from "@/providers/FavoriteProvider";
 import { use } from "react";
+import { FavoriteContext } from "../../providers";
 
 export const useIsFavorite = ({
   id,
