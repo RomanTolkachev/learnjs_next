@@ -1,3 +1,3 @@
-import { PaginatedList } from "@/widgets/PaginatedList";
+import { PaginatedList } from "@/views/PaginatedList";
 
 export default PaginatedList;
