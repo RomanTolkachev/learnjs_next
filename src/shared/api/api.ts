@@ -179,3 +179,51 @@ export const logOut = async (): Promise<globalThis.Response> => {
         }
     })
 }
+
+export type TBrand = {
+    id: number,
+    name: string
+}
+
+export const getBrands = async (): Promise<Response<TBrand[]>> => {
+    try {
+        const res = await fetch(`${API_URL}/brands`)
+
+        if (!res.ok) {
+            return {
+                isError: true,
+                data: undefined
+            }
+        }
+
+        return {
+            isError: false,
+            data: await res.json()
+        }
+    } catch (err) {
+        console.log("ошибка", err)
+        return {
+            isError: true,
+        }
+    }
+}
+
+export const getRacketOgDataById = async ({
+    id,
+}: { id: string }): Promise<Response<IProduct>> => {
+    const result = await fetch(`${API_URL}/product/${id}`, {
+        cache: "force-cache",
+    });
+
+    if (result.status === 404) {
+        return { isError: false, data: undefined };
+    }
+
+    if (!result.ok) {
+        return { isError: true, data: undefined };
+    }
+
+    const data: { product: IProduct } = await result.json();
+
+    return { isError: false, data: data.product };
+};
